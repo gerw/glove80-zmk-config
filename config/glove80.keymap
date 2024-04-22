@@ -11,7 +11,14 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 
+#include "keys_de.h"
+
 #define HYPER LC(LS(LG(LALT)))
+
+// Umlauts
+#define DE_AUML DE_A_UMLAUT
+#define DE_OUML DE_O_UMLAUT
+#define DE_UUML DE_U_UMLAUT
 
 // layers
 #define DEFAULT 0
@@ -39,6 +46,14 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
+
+        csz: caret_sz {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_CARET>, <&kp DE_SZ>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
     };
 
     macros {
@@ -93,19 +108,19 @@
         default_layer {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
-            // |  =    |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |   -  |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                                                 |  Y   |   U   |   I   |  O   |   P   |   \  |
-            // |  ESC  |  A  |  S  |  D   |  F   |  G   |                                                 |  H   |   J   |   K   |  L   |   ;   |   '  |
-            // |   `   |  Z  |  X  |  C   |  V   |  B   | LSHFT | LCTRL | LOWER | | LGUI  | RCTRL | RSHFT |  N   |   M   |   ,   |  .   |   /   | PGUP |
-            // | MAGIC | HOME| END | LEFT | RIGHT|      | BSPC  | DEL   | LALT  | | RALT  | RET   | SPACE |      |  UP   | DOWN  |  [   |   ]   | PGDN |
+            // |  ^ß   |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |  /=´ | \`
+            // |  TAB  |  Ü  |  ,< |  .>  |  P   |  Y   |                                                 |  F   |   G   |   C   |  T   |   Z   |  ;:  | +*
+            // |  ESC  |  A  |  O  |  E   |  I   |  U   |                                                 |  H   |   D   |   R   |  N   |   S   |   L  |
+            // |   Ä   |  Ö  |  Q  |  J   |  K   |  X   | LSHFT | LCTRL | LOWER | | LGUI  | RCTRL | RSHFT |  B   |   M   |   W   |  V   |   -_  |  '"  |
+            // | MAGIC | LEFT|RIGHT| DOWN |  UP  |      | BSPC  | DEL   | LALT  | | RALT  | RET   | SPACE |      |  PGUP | PGDN  |  ??  |   ??  |  ??  |
 
             bindings = <
-            &kp F1         &kp F2   &kp F3      &kp F4      &kp F5                                                                                         &kp F6  &kp F7      &kp F8      &kp F9      &kp F10
-            &kp EQUAL      &kp N1   &kp N2      &kp N3      &kp N4      &kp N5                                                                     &kp N6  &kp N7  &kp N8      &kp N9      &kp N0      &kp MINUS
-            &kp TAB        &kp Q    &kp W       &kp E       &kp R       &kp T                                                                      &kp Y   &kp U   &kp I       &kp O       &kp P       &kp BSLH
-            &kp ESC        &kp A    &kp S       &kp D       &kp F       &kp G                                                                      &kp H   &kp J   &kp K       &kp L       &kp SEMI    &kp SQT
-            &kp GRAVE      &kp Z    &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT   &kp N   &kp M   &kp COMMA   &kp DOT     &kp FSLH    &kp PG_UP
-            &magic MAGIC 0 &kp HOME &kp END     &kp LEFT    &kp RIGHT           &kp BSPC    &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE           &kp UP  &kp DOWN    &kp LBKT    &kp RBKT    &kp PG_DN
+            &kp F1         &kp F2      &kp F3    &kp F4      &kp F5                                                                                        &kp F6    &kp F7      &kp F8      &kp F9       &kp F10
+            &csz           &kp N1      &kp N2    &kp N3      &kp N4      &kp N5                                                                   &kp N6   &kp N7    &kp N8      &kp N9      &kp N0       &kp DE_SLASH
+            &kp TAB        &kp DE_UUML &kp COMMA &kp DOT     &kp DE_P    &kp DE_Y                                                                 &kp DE_F &kp DE_G  &kp DE_C    &kp DE_T    &kp DE_Z     &kp COLON
+            &kp ESC        &kp DE_A    &kp DE_O  &kp DE_E    &kp DE_I    &kp DE_U                                                                 &kp DE_H &kp DE_D  &kp DE_R    &kp DE_N    &kp DE_S     &kp DE_L
+            &kp DE_AUML    &kp DE_OUML &kp DE_Q  &kp DE_J    &kp DE_K    &kp DE_X &kp LSHFT &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT  &kp DE_B &kp DE_M  &kp DE_W    &kp DE_V    &kp DE_MINUS &kp QUOTE
+            &magic MAGIC 0 &kp LEFT    &kp RIGHT &kp DOWN    &kp UP               &kp BSPC  &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE           &kp PG_UP &kp PG_DN   &kp LBKT    &kp RBKT     &kp PG_DN
             >;
         };
 
