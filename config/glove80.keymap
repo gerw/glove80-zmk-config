@@ -47,10 +47,38 @@
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
 
-        csz: caret_sz {
+        c_sz: caret_sz {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DE_CARET>, <&kp DE_SZ>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        co_lt: comma_lt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_COMMA>, <&kp DE_LESS_THAN>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        do_gt: dot_gt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_DOT>, <&kp DE_GREATER_THAN>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        sc_col: semicolon_colon {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_SEMICOLON>, <&kp DE_COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        qt_dqt: quote_dblquote {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_SINGLE_QUOTE>, <&kp DE_DOUBLE_QUOTES>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -116,11 +144,11 @@
 
             bindings = <
             &kp F1         &kp F2      &kp F3    &kp F4      &kp F5                                                                                        &kp F6    &kp F7      &kp F8      &kp F9       &kp F10
-            &csz           &kp N1      &kp N2    &kp N3      &kp N4      &kp N5                                                                   &kp N6   &kp N7    &kp N8      &kp N9      &kp N0       &kp DE_SLASH
-            &kp TAB        &kp DE_UUML &kp COMMA &kp DOT     &kp DE_P    &kp DE_Y                                                                 &kp DE_F &kp DE_G  &kp DE_C    &kp DE_T    &kp DE_Z     &kp COLON
+            &c_sz          &kp N1      &kp N2    &kp N3      &kp N4      &kp N5                                                                   &kp N6   &kp N7    &kp N8      &kp N9      &kp N0       &kp DE_SLASH
+            &kp TAB        &kp DE_UUML &co_lt    &do_gt      &kp DE_P    &kp DE_Y                                                                 &kp DE_F &kp DE_G  &kp DE_C    &kp DE_T    &kp DE_Z     &sc_col
             &kp ESC        &kp DE_A    &kp DE_O  &kp DE_E    &kp DE_I    &kp DE_U                                                                 &kp DE_H &kp DE_D  &kp DE_R    &kp DE_N    &kp DE_S     &kp DE_L
-            &kp DE_AUML    &kp DE_OUML &kp DE_Q  &kp DE_J    &kp DE_K    &kp DE_X &kp LSHFT &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT  &kp DE_B &kp DE_M  &kp DE_W    &kp DE_V    &kp DE_MINUS &kp QUOTE
-            &magic MAGIC 0 &kp LEFT    &kp RIGHT &kp DOWN    &kp UP               &kp BSPC  &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE           &kp PG_UP &kp PG_DN   &kp LBKT    &kp RBKT     &kp PG_DN
+            &kp DE_AUML    &kp DE_OUML &kp DE_Q  &kp DE_J    &kp DE_K    &kp DE_X &kp LSHFT &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT  &kp DE_B &kp DE_M  &kp DE_W    &kp DE_V    &kp DE_MINUS &qt_dqt
+            &magic MAGIC 0 &kp LEFT    &kp RIGHT &kp DOWN    &kp UP               &kp BSPC  &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE           &kp PG_UP &kp PG_DN   &none       &none        &none
             >;
         };
 

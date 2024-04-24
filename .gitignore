@@ -1,2 +1,4 @@
 *~
 *.uf2
+.*.swp
+config/build/
