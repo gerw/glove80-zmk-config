@@ -152,7 +152,7 @@
             // |  ^ß   |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |  /=´ | 
             // |  TAB  |  Ü  |  ,< |  .>  |  P   |  Y   |                                                 |  F   |   G   |   C   |  T   |   Z   |  \?` | 
             // |  ESC  |  A  |  O  |  E   |  I   |  U   |                                                 |  H   |   D   |   R   |  N   |   S   |   L  |
-            // |   Ä   |  Ö  |  Q  |  J   |  K   |  X   | LSHFT | LCTRL | LGUI  | | LOWER | RCTRL | RSHFT |  B   |   M   |   W   |  V   |   -_  |  '"# |
+            // |   Ä   |  Ö  |  Q  |  J   |  K   |  X   | LSHFT | LCTRL | LGUI  | | RCTRL | RSHFT | LOWER |  B   |   M   |   W   |  V   |   -_  |  '"# |
             // | MAGIC | LEFT|RIGHT| DOWN |  UP  |      | BSPC  | DEL   | LALT  | | LALT  | RET   | SPACE |      |  PGUP | PGDN  |  ;:  |   +*~ |  ??  |  use "~#" instead of "??"?
 
             bindings = <
