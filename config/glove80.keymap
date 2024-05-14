@@ -161,7 +161,7 @@
             &kp TAB        &kp DE_UUML  &co_lt      &do_gt       &kp DE_P     &kp DE_Y                                                                  &kp DE_F     &kp DE_G   &kp DE_C     &kp DE_T      &kp DE_Z        &bsl_qm
             &kp ESC        &kp DE_A     &kp DE_O    &kp DE_E     &kp DE_I     &kp DE_U                                                                  &kp DE_H     &kp DE_D   &kp DE_R     &kp DE_N      &kp DE_S        &kp DE_L
             &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K     &kp DE_X    &kp LCTRL &kp LALT  &kp DEL     &kp RCTRL &kp RSHFT &layer_td &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
-            &magic MAGIC 0 &kp LEFT     &kp RIGHT   &kp DOWN     &kp UP                   &kp LSHFT &kp LGUI  &kp BSPC    &kp LALT  &kp RET   &kp SPACE              &kp PG_UP  &kp PG_DN    &sc_col       &kp DE_PLUS     &none
+            &magic MAGIC 0 &kp LEFT     &kp RIGHT   &kp DOWN     &kp UP                   &sk LSHFT &kp LGUI  &kp BSPC    &kp LALT  &kp RET   &kp SPACE              &kp PG_UP  &kp PG_DN    &sc_col       &kp DE_PLUS     &none
             >;
         };
 
