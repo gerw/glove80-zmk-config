@@ -146,7 +146,7 @@
             &c_sz          &kp N1       &kp N2      &kp N3       &kp N4       &kp N5                                                                    &kp N6       &kp N7     &kp N8       &kp N9        &kp N0          &kp DE_SLASH
             &kp TAB        &kp DE_UUML  &co_lt      &do_gt       &kp DE_P     &kp DE_Y                                                                  &kp DE_F     &kp DE_G   &kp DE_C     &kp DE_T      &kp DE_Z        &kp DE_BSLH
             &kp ESC        &kp DE_A     &kp DE_O    &kp DE_E     &kp DE_I     &kp DE_U                                                                  &kp DE_H     &kp DE_D   &kp DE_R     &kp DE_N      &kp DE_S        &kp DE_L
-            &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K     &kp DE_X    &kp LSHFT &kp LCTRL &kp LGUI    &layer_td &kp RCTRL &kp RSHFT &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
+            &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K     &kp DE_X    &kp LSHFT &kp LCTRL &kp LGUI    &kp RCTRL &kp RSHFT &layer_td &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
             &magic MAGIC 0 &kp LEFT     &kp RIGHT   &kp DOWN     &kp UP                   &kp BSPC  &kp DEL   &kp LALT    &kp LALT  &kp RET   &kp SPACE              &kp PG_UP  &kp PG_DN    &sc_col       &kp DE_PLUS     &none
             >;
         };
@@ -157,8 +157,8 @@
             &none          &none        &none       &none        &kp INS      &kp HOME                                                                  &none        &kp KP_NUM &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp PSCRN
             &trans         &none        &none       &kp DE_LBRC  &kp DE_RBRC  &kp END                                                                   &none        &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp SLCK
             &trans         &kp DE_CARET &kp DE_BSLH &kp DE_LBKT  &kp DE_RBKT  &kp DE_DLLR                                                               &kp DE_PRCNT &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_PLUS     &none
-            &none          &kp K_CMENU  &none       &kp DE_LPAR  &kp DE_RPAR  &none       &trans    &trans    &to DEFAULT &trans    &trans    &trans    &kp KP_COMMA &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &none
-            &trans         &trans       &trans      &trans       &trans                   &trans    &trans    &trans      &trans    &trans    &trans                 &kp KP_N0  &kp KP_N0    &kp KP_DOT    &kp KP_ENTER    &none
+            &none          &kp K_CMENU  &none       &kp DE_LPAR  &kp DE_RPAR  &none       &trans    &trans    &trans   &trans    &trans    &to DEFAULT  &kp KP_COMMA &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &none
+            &trans         &trans       &trans      &trans       &trans                   &trans    &trans    &trans   &trans    &trans    &trans       &kp KP_N0  &kp KP_N0    &kp KP_DOT    &kp KP_ENTER    &none
             >;
         };
 
