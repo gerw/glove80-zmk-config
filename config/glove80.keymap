@@ -152,16 +152,16 @@
             // |  ^ß   |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |  /=´ | 
             // |  TAB  |  Ü  |  ,< |  .>  |  P   |  Y   |                                                 |  F   |   G   |   C   |  T   |   Z   |  \?` | 
             // |  ESC  |  A  |  O  |  E   |  I   |  U   |                                                 |  H   |   D   |   R   |  N   |   S   |   L  |
-            // |   Ä   |  Ö  |  Q  |  J   |  K   |  X   | LCTRL | LALT  | DEL   | | RCTRL | RSHFT | LOWER |  B   |   M   |   W   |  V   |   -_  |  '"# |
-            // | MAGIC | LEFT|RIGHT| DOWN |  UP  |      | LSHFT | LGUI  | BSPC  | | LALT  | RET   | SPACE |      |  PGUP | PGDN  |  ;:  |   +*~ |  ??  |  use "~#" instead of "??"?
+            // |   Ä   |  Ö  |  Q  |  J   |  K   |  X   | LCTRL | LGUI  | DEL   | | RCTRL | RSHFT | LOWER |  B   |   M   |   W   |  V   |   -_  |  '"# |
+            // | MAGIC | LEFT|RIGHT| DOWN |  UP  |      | LSHFT | LALT  | BSPC  | | LALT  | RET   | SPACE |      |  PGUP | PGDN  |  ;:  |   +*~ |  ??  |  use "~#" instead of "??"?
 
             bindings = <
             &kp F1         &kp F2       &kp F3      &kp F4       &kp F5                                                                                              &kp F6     &kp F7       &kp F8        &kp F9          &kp F10
             &c_sz          &kp N1       &kp N2      &kp N3       &kp N4       &kp N5                                                                    &kp N6       &kp N7     &kp N8       &kp N9        &kp N0          &sl_eq
             &kp TAB        &kp DE_UUML  &co_lt      &do_gt       &kp DE_P     &kp DE_Y                                                                  &kp DE_F     &kp DE_G   &kp DE_C     &kp DE_T      &kp DE_Z        &bsl_qm
             &kp ESC        &kp DE_A     &kp DE_O    &kp DE_E     &kp DE_I     &kp DE_U                                                                  &kp DE_H     &kp DE_D   &kp DE_R     &kp DE_N      &kp DE_S        &kp DE_L
-            &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K     &kp DE_X    &kp LCTRL &kp LALT  &kp DEL     &kp RCTRL &kp RSHFT &layer_td &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
-            &magic MAGIC 0 &kp LEFT     &kp RIGHT   &kp DOWN     &kp UP                   &sk LSHFT &kp LGUI  &kp BSPC    &kp LALT  &kp RET   &kp SPACE              &kp PG_UP  &kp PG_DN    &sc_col       &kp DE_PLUS     &none
+            &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K     &kp DE_X    &kp LCTRL &kp LGUI  &kp DEL     &kp RCTRL &kp RSHFT &layer_td &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
+            &magic MAGIC 0 &kp LEFT     &kp RIGHT   &kp DOWN     &kp UP                   &sk LSHFT &kp LALT  &kp BSPC    &kp LALT  &kp RET   &kp SPACE              &kp PG_UP  &kp PG_DN    &sc_col       &kp DE_PLUS     &none
             >;
         };
 
