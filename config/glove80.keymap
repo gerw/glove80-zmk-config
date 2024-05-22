@@ -25,6 +25,24 @@
 #define LOWER 1
 #define MAGIC 2
 
+// Macro for shift-number keys which do not morph if alt is pressed
+#define SHIFTED_WO_ALT(name, normal, shifted)        \
+	name ## _inner: name ## _inner_behaviour {         \
+		compatible = "zmk,behavior-mod-morph";           \
+		#binding-cells = <0>;                            \
+		bindings = <&kp normal>, <&kp shifted>;          \
+		mods = <(MOD_LSFT|MOD_RSFT)>;                    \
+	};                                                 \
+	                                                   \
+	name: name ## _behaviour{                          \
+		compatible = "zmk,behavior-mod-morph";           \
+		#binding-cells = <0>;                            \
+		bindings = <&name ## _inner>, <&kp normal>;      \
+		mods = <(MOD_LALT|MOD_RALT)>;                    \
+		keep-mods = <(MOD_LALT|MOD_RALT)>;               \
+	};
+
+
 &sk {
     quick-release;
 };
@@ -107,26 +125,9 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        zwei_at: zwei_at {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_N2>, <&kp DE_AT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        sieben_sz: sieben_sz {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_N7>, <&kp DE_SZ>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        acht_bar: acht_bar {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_N8>, <&kp DE_PIPE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
+        SHIFTED_WO_ALT( zwei_at,   DE_N2, DE_AT )
+        SHIFTED_WO_ALT( sieben_sz, DE_N7, DE_SZ )
+        SHIFTED_WO_ALT( acht_bar,  DE_N8, DE_PIPE )
 
     };
 
