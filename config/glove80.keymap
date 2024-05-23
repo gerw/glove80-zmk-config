@@ -25,6 +25,15 @@
 #define LOWER 1
 #define MAGIC 2
 
+// Macro for shift-morphed key
+#define SHIFTED(name, normal, shifted)               \
+	name: name ## _behaviour {                         \
+		compatible = "zmk,behavior-mod-morph";           \
+		#binding-cells = <0>;                            \
+		bindings = <&kp normal>, <&kp shifted>;          \
+		mods = <(MOD_LSFT|MOD_RSFT)>;                    \
+	};
+
 // Macro for shift-number keys which do not morph if alt is pressed
 #define SHIFTED_WO_ALT(name, normal, shifted)        \
 	name ## _inner: name ## _inner_behaviour {         \
@@ -69,61 +78,14 @@
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
 
-        c_sz: caret_sz {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_CARET>, <&kp DE_SZ>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        co_lt: comma_lt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_COMMA>, <&kp DE_LESS_THAN>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        do_gt: dot_gt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_DOT>, <&kp DE_GREATER_THAN>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        sc_col: semicolon_colon {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_SEMICOLON>, <&kp DE_COLON>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        qt_dqt: quote_dblquote {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_SINGLE_QUOTE>, <&kp DE_DOUBLE_QUOTES>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        sl_eq: slash_equal {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_SLASH>, <&kp DE_EQUAL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        bsl_qm: backslash_question {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_BACKSLASH>, <&kp DE_QUESTION>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        tld_hsh: tilde_hash {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DE_TILDE>, <&kp DE_HASH>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
+        SHIFTED( c_sz, DE_CARET, DE_SZ )
+        SHIFTED( co_lt, DE_COMMA, DE_LESS_THAN )
+        SHIFTED( do_gt, DE_DOT, DE_GREATER_THAN )
+        SHIFTED( sc_col, DE_SEMICOLON, DE_COLON )
+        SHIFTED( qt_dqt, DE_SINGLE_QUOTE, DE_DOUBLE_QUOTES )
+        SHIFTED( sl_eq, DE_SLASH, DE_EQUAL )
+        SHIFTED( bsl_qm, DE_BACKSLASH, DE_QUESTION )
+        SHIFTED( tld_hsh, DE_TILDE, DE_HASH )
 
         SHIFTED_WO_ALT( zwei_at,   DE_N2, DE_AT )
         SHIFTED_WO_ALT( sieben_sz, DE_N7, DE_SZ )
