@@ -2,12 +2,15 @@
 
 DELAY=0.1
 
-# Wait for a file or a directory
+# Wait for a condition
 wait_for() {
-	echo "Waiting for \"$1\"..."
-	until [[ -e "$1" || -d "$1" ]]; do
-		sleep $DELAY
-	done
+	if [[ "$#" -eq 2 ]]; then
+		echo "Waiting for \"$2\" to appear..."
+		until test $1 "$2"; do sleep $DELAY; done
+	else
+		echo "Waiting for \"$3\" to disappear..."
+		until test $1 $2 "$3"; do sleep $DELAY; done
+	fi
 }
 
 for HAND in right left; do
@@ -18,13 +21,15 @@ for HAND in right left; do
 	MOUNTPOINT="$HOME/media/$LABEL/"
 	FILE="$HAND.uf2"
 
-	wait_for "$DEVICE"
+	wait_for -e "$DEVICE"
 
 	udiskie-mount "$DEVICE" 
 
-	wait_for "$MOUNTPOINT"
+	wait_for -d "$MOUNTPOINT"
 
 	cp -v "$FILE" "$MOUNTPOINT"
+
+	wait_for ! -e "$DEVICE"
 done
 
 echo "Done."
