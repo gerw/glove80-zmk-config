@@ -13,10 +13,12 @@ wait_for() {
 	fi
 }
 
-for HAND in right left; do
-	[[ $HAND == "right" ]] && short="RH" || short="LH"
+install() {
+	HAND=$1
 
-	LABEL="GLV80${short}BOOT"
+	[[ $HAND == "right" ]] && SHORT="RH" || SHORT="LH"
+
+	LABEL="GLV80${SHORT}BOOT"
 	DEVICE="/dev/disk/by-label/$LABEL"
 	MOUNTPOINT="$HOME/media/$LABEL/"
 	FILE="$HAND.uf2"
@@ -30,6 +32,14 @@ for HAND in right left; do
 	cp -v "$FILE" "$MOUNTPOINT"
 
 	wait_for ! -e "$DEVICE"
+
+	echo "Finished with $HAND."
+}
+
+for HAND in right left; do
+	install $HAND &
 done
+
+wait
 
 echo "Done."
