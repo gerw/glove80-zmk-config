@@ -53,6 +53,7 @@
 
 
 &sk {
+    release-after-ms = <250>;
     quick-release;
 };
 
@@ -77,6 +78,16 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
+
+        ssk: smart_sticky_key {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            hold-while-undecided;
+            hold-while-undecided-linger;
+            bindings = <&kp>, <&sk>;
+        };
+
 
         SHIFTED( c_sz, DE_CARET, DE_SZ )
         SHIFTED( co_lt, DE_COMMA, DE_LESS_THAN )
@@ -152,12 +163,12 @@
             // | MAGIC | LEFT|RIGHT| DOWN |  UP  |      | LSHFT | LALT  | BSPC  | | LALT  | RET   | SPACE |      |  PGUP | PGDN  |  ;:  |   +*  |  ~#  |
 
             bindings = <
-            &kp F1         &kp F2       &kp F3      &kp F4       &kp F5                                                                                              &kp F6     &kp F7       &kp F8        &kp F9          &kp F10
-            &c_sz          &kp N1       &zwei_at    &kp N3       &kp N4       &kp N5                                                                    &kp N6       &sieben_sz &acht_bar    &kp N9        &kp N0          &sl_eq
-            &kp TAB        &kp DE_UUML  &co_lt      &do_gt       &kp DE_P     &kp DE_Y                                                                  &kp DE_F     &kp DE_G   &kp DE_C     &kp DE_T      &kp DE_Z        &bsl_qm
-            &kp ESC        &kp DE_A     &kp DE_O    &kp DE_E     &kp DE_I     &kp DE_U                                                                  &kp DE_H     &kp DE_D   &kp DE_R     &kp DE_N      &kp DE_S        &kp DE_L
-            &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K     &kp DE_X    &kp LCTRL &kp LGUI  &kp DEL     &kp RCTRL &kp RSHFT &layer_td &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
-            &magic MAGIC 0 &kp LEFT     &kp RIGHT   &kp DOWN     &kp UP                   &sk LSHFT &kp LALT  &kp BSPC    &kp LALT  &kp RET   &kp SPACE              &kp PG_UP  &kp PG_DN    &sc_col       &kp DE_PLUS     &tld_hsh
+            &kp F1         &kp F2       &kp F3      &kp F4       &kp F5                                                                                               &kp F6     &kp F7       &kp F8        &kp F9          &kp F10
+            &c_sz          &kp N1       &zwei_at    &kp N3       &kp N4    &kp N5                                                                        &kp N6       &sieben_sz &acht_bar    &kp N9        &kp N0          &sl_eq
+            &kp TAB        &kp DE_UUML  &co_lt      &do_gt       &kp DE_P  &kp DE_Y                                                                      &kp DE_F     &kp DE_G   &kp DE_C     &kp DE_T      &kp DE_Z        &bsl_qm
+            &kp ESC        &kp DE_A     &kp DE_O    &kp DE_E     &kp DE_I  &kp DE_U                                                                      &kp DE_H     &kp DE_D   &kp DE_R     &kp DE_N      &kp DE_S        &kp DE_L
+            &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K  &kp DE_X &kp LCTRL        &kp LGUI  &kp DEL     &kp RCTRL &kp RSHFT &layer_td &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
+            &magic MAGIC 0 &kp LEFT     &kp RIGHT   &kp DOWN     &kp UP             &ssk LSHFT LSHFT &kp LALT  &kp BSPC    &kp LALT  &kp RET   &kp SPACE              &kp PG_UP  &kp PG_DN    &sc_col       &kp DE_PLUS     &tld_hsh
             >;
         };
 
