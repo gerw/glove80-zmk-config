@@ -26,13 +26,16 @@
 #define MAGIC 2
 
 // Macro for shift-morphed key
-#define SHIFTED(name, normal, shifted)               \
+#define SHIFTED_RAW(name, normal, shifted)           \
 	name: name ## _behaviour {                         \
 		compatible = "zmk,behavior-mod-morph";           \
 		#binding-cells = <0>;                            \
-		bindings = <&kp normal>, <&kp shifted>;          \
+		bindings = <normal>, <shifted>;                  \
 		mods = <(MOD_LSFT|MOD_RSFT)>;                    \
 	};
+
+// Macro for shift-morphed key with &kp's
+#define SHIFTED(name, normal, shifted) SHIFTED_RAW(name, &kp normal, &kp shifted)
 
 // Macro for shift-number keys which do not morph if alt is pressed
 #define SHIFTED_WO_ALT(name, normal, shifted)        \
@@ -88,13 +91,20 @@
             bindings = <&kp>, <&sk>;
         };
 
+        grave_dance: grave_dance_behaviour {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp RA(DE_GRAVE)>, <&kp DE_GRAVE>, <&triple_grave>;
+        };
+
+        SHIFTED_RAW( ac_gr, &kp RA(DE_ACUTE), &grave_dance )
 
         SHIFTED( c_sz, DE_CARET, DE_SZ )
         SHIFTED( co_lt, DE_COMMA, DE_LESS_THAN )
         SHIFTED( do_gt, DE_DOT, DE_GREATER_THAN )
         SHIFTED( sc_col, DE_SEMICOLON, DE_COLON )
         SHIFTED( qt_dqt, DE_SINGLE_QUOTE, DE_DOUBLE_QUOTES )
-        SHIFTED( sl_eq, DE_SLASH, DE_EQUAL )
         SHIFTED( bsl_qm, DE_BACKSLASH, DE_QUESTION )
         SHIFTED( tld_hsh, DE_TILDE, DE_HASH )
 
@@ -148,6 +158,12 @@
                 = <&out OUT_BLE>,
                   <&bt BT_SEL 3>;
         };
+
+        triple_grave: triple_grave_behaviour {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp DE_GRAVE &kp DE_GRAVE &kp DE_GRAVE>;
+        };
     };
 
     keymap {
@@ -156,7 +172,7 @@
         default_layer {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
-            // |  ^ß   |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |  /=´ | 
+            // |  ^ß   |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |  ´`  |
             // |  TAB  |  Ü  |  ,< |  .>  |  P   |  Y   |                                                 |  F   |   G   |   C   |  T   |   Z   |  \?` | 
             // |  ESC  |  A  |  O  |  E   |  I   |  U   |                                                 |  H   |   D   |   R   |  N   |   S   |   L  |
             // |   Ä   |  Ö  |  Q  |  J   |  K   |  X   | LCTRL | LGUI  | DEL   | | RCTRL | RSHFT | LOWER |  B   |   M   |   W   |  V   |   -_  |  '"  |
@@ -164,7 +180,7 @@
 
             bindings = <
             &kp F1         &kp F2       &kp F3      &kp F4       &kp F5                                                                                               &kp F6     &kp F7       &kp F8        &kp F9          &kp F10
-            &c_sz          &kp N1       &zwei_at    &kp N3       &kp N4    &kp N5                                                                        &kp N6       &sieben_sz &acht_bar    &kp N9        &kp N0          &sl_eq
+            &c_sz          &kp N1       &zwei_at    &kp N3       &kp N4    &kp N5                                                                        &kp N6       &sieben_sz &acht_bar    &kp N9        &kp N0          &ac_gr
             &kp TAB        &kp DE_UUML  &co_lt      &do_gt       &kp DE_P  &kp DE_Y                                                                      &kp DE_F     &kp DE_G   &kp DE_C     &kp DE_T      &kp DE_Z        &bsl_qm
             &kp ESC        &kp DE_A     &kp DE_O    &kp DE_E     &kp DE_I  &kp DE_U                                                                      &kp DE_H     &kp DE_D   &kp DE_R     &kp DE_N      &kp DE_S        &kp DE_L
             &kp DE_AUML    &kp DE_OUML  &kp DE_Q    &kp DE_J     &kp DE_K  &kp DE_X &kp LCTRL        &kp LGUI  &kp DEL     &kp RCTRL &kp RSHFT &layer_td &kp DE_B     &kp DE_M   &kp DE_W     &kp DE_V      &kp DE_MINUS    &qt_dqt
